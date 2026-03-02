@@ -1,5 +1,4 @@
 use proc_macro::TokenStream;
-use rvlib::{flow2graph, tree_view::*};
 use syn::{ItemEnum, parse_macro_input};
 use quote::quote;
 
@@ -7,6 +6,7 @@ use crate::utils::*;
 use parser_lib::mermaid_flow::*;
 use parser_lib::common::*;
 use crate::init_args::*;
+use crate::flow_graph::{FlowchartToGraph, GraphTreeView, TreeView};
 
 /// Expand a flowchart file into a Rust enum, which represent a graph
 pub fn expand(attr: TokenStream, input: TokenStream) -> TokenStream {
@@ -24,7 +24,7 @@ pub fn expand(attr: TokenStream, input: TokenStream) -> TokenStream {
 
     match parse_flowchart_from_path(path.display().to_string().as_str()) {
         Ok(flow) => {
-            let graph = flow2graph::FlowchartToGraph::new()
+            let graph = FlowchartToGraph::new()
                 .convert(flow.get_stmts());
 
             if !graph.is_tree() {

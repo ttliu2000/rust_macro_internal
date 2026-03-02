@@ -13,4 +13,3 @@ proc-macro2 = "*"
 
 parser_lib = { path = "../parser_lib" }
 rust_macro = { path = "../rust_macro" }
-rvlib = { path = "../Lib/rvlib" }

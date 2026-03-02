@@ -5,6 +5,7 @@ pub (crate) mod ini2type;
 pub (crate) mod init_args;
 pub (crate) mod csv2type;
 pub (crate) mod packet2type;
+pub (crate) mod flow_graph;
 
 use crate::ini2type::*;
 use crate::csv2type::*;
