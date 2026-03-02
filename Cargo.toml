@@ -1,0 +1,16 @@
+[package]
+name = "rust_macro_internal"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "*", features = ["full"] }
+quote = "*"
+proc-macro2 = "*"
+
+parser_lib = { path = "../parser_lib" }
+rust_macro = { path = "../rust_macro" }
+rvlib = { path = "../Lib/rvlib" }
