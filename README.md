@@ -4,6 +4,16 @@
 
 It provides compile-time code generation driven by source artifacts (INI, CSV, JSON, and Mermaid files), and is used as the implementation layer behind higher-level macro workflows.
 
+## Direction
+
+`rust_macro_internal` is moving toward a broader **diagram-to-code** vision: using structured, human-readable diagrams as the authoritative source of truth for generated Rust code.
+
+Rather than writing boilerplate by hand, the goal is to express intent visually — state machines, packet layouts, call flows, data schemas — and have the macro layer synthesize correct, idiomatic Rust from those artifacts at compile time.
+
+This positions the crate as an exploration of what the Rust ecosystem could gain from first-class diagram-driven codegen: fewer hand-maintained structs, tighter coupling between documentation and implementation, and a path toward making complex system designs directly executable.
+
+Mermaid is the current substrate for this work, with INI, CSV, and JSON as supporting formats for data-oriented generation. The longer-term direction is richer diagram semantics — sequence flows becoming async function scaffolds, state diagrams becoming typestate machines, packet diagrams becoming zero-copy layout structs — all driven by the same compile-time macro machinery.
+
 ## Location
 
 - Crate path: `CLR/rust_macro_internal`
