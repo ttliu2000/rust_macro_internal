@@ -35,7 +35,9 @@ pub fn get_file_pathbuf(path_lit: &LitStr) -> Result<PathBuf, TokenStream> {
             return Ok(fallback);
         }
 
-        let root_folder_info = format!("the root dir = {manifest_dir}, and path to file = {}", path.display());
+        let root_folder_info = format!("the manifest dir = {manifest_dir}, path = {}, and fallbak path to file = {}", 
+            path.display(), 
+            fallback.display());
         let err_msg = format!("The specified file is not exists. {root_folder_info}");
         let token = syn::Error::new_spanned(
             path_lit,

@@ -136,3 +136,10 @@ pub (crate) mod sequence_diagram;
 pub fn sequence2function(attr: TokenStream, item: TokenStream) -> TokenStream {
     expand_attr_with_parse!(attr as init_args::InitArgs, item as syn::ItemFn, sequence_diagram::sequence2function::expand)
 }
+
+pub (crate) mod md2type;
+
+#[proc_macro_attribute]
+pub fn md2struct(attr: TokenStream, item: TokenStream) -> TokenStream {
+    expand_attr_with_parse!(attr as init_args::InitArgs2LitStr, item as syn::ItemStruct, md2type::md2struct::expand)
+}
