@@ -6,7 +6,6 @@ use crate::utils::*;
 use parser_lib::mermaid_flow::*;
 use parser_lib::common::*;
 use crate::init_args::*;
-use crate::flow_graph::{FlowchartToGraph, GraphTreeView, TreeView};
 
 /// Expand a flowchart file into a Rust enum, which represent a graph
 pub fn expand(attr: TokenStream, input: TokenStream) -> TokenStream {

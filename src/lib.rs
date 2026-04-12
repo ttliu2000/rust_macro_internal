@@ -5,12 +5,13 @@ pub (crate) mod ini2type;
 pub (crate) mod init_args;
 pub (crate) mod csv2type;
 pub (crate) mod packet2type;
-pub (crate) mod flow_graph;
+pub (crate) mod flow2type;
 
 use crate::ini2type::*;
 use crate::csv2type::*;
 use crate::state2struct::*;
 use crate::packet2type::*;
+use crate::flow2type::*;
 
 macro_rules! expand_attr_with_parse {
     ($attr:ident as $attr_ty:ty, $item:ident as $item_ty:ty, $expand:path) => {{
@@ -142,4 +143,9 @@ pub (crate) mod md2type;
 #[proc_macro_attribute]
 pub fn md2struct(attr: TokenStream, item: TokenStream) -> TokenStream {
     expand_attr_with_parse!(attr as init_args::InitArgs2LitStr, item as syn::ItemStruct, md2type::md2struct::expand)
+}
+
+#[proc_macro]
+pub fn flow2logic(attr: TokenStream) -> TokenStream {
+    expand_with_parse!(attr as init_args::InitArgs4, flow2logic::expand)
 }
