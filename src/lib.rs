@@ -55,11 +55,9 @@ pub fn ini_enum_str(attr: TokenStream, item: TokenStream) -> TokenStream {
     expand_attr_with_parse!(attr as init_args::InitArgs, item as syn::ItemEnum, ini2enum_str::expand)
 }
 
-pub (crate) mod flow2enum;
-
 #[proc_macro_attribute]
 pub fn flow_enum(attr: TokenStream, item: TokenStream) -> TokenStream {
-    flow2enum::expand(attr, item)
+    flow2type::flow2enum::expand(attr, item)
 }
 
 #[proc_macro_attribute]

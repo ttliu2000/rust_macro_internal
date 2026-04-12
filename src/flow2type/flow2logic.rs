@@ -1,12 +1,16 @@
 use parser_lib::mermaid_flow::*;
-use proc_macro2::{Span, TokenStream};
+use proc_macro2::TokenStream;
 use std::str::FromStr;
 use quote::quote;
 use quote::format_ident;
-use syn::Ident;
 
 use crate::init_args::*;
 
+/// Note: this macro is designed for c language compiler, and it's not for general use.
+/// Macro to generate logic code for a flowchart, with the target node as the root of the logic code. 
+/// The macro takes 4 arguments: the path to the mermaid file, the name of the struct to be generated, 
+/// the name of the target node in the flowchart, 
+/// and the name of the field in the target node to be used as the variable in the logic code.
 pub fn expand(attr: InitArgs4) -> TokenStream {
     let mmd_file_path = attr.get_path().value();
     let struct_name = attr.get_tag().to_string();
