@@ -39,7 +39,7 @@ fn get_as_str_block(v:&Vec<Property>, item_enum: &syn::ItemEnum) -> proc_macro2:
             Err(e) => return e.into(),
         };
 
-        let variant_value = LitStr::new(&p.get_name(), item_enum.ident.span());
+        let variant_value = LitStr::new(&p.get_value(), item_enum.ident.span());
 
         let arm: proc_macro2::TokenStream = quote::quote! {
             Self::#variant_ident => #variant_value,
@@ -65,7 +65,7 @@ fn get_from_str_block(v:&Vec<Property>, item_enum: &syn::ItemEnum) -> proc_macro
             Err(e) => return e.into(),
         };
 
-        let variant_value = LitStr::new(&p.get_name(), item_enum.ident.span());
+        let variant_value = LitStr::new(&p.get_value(), item_enum.ident.span());
 
         let arm: proc_macro2::TokenStream = quote::quote! {
             #variant_value => Some(Self::#variant_ident),
