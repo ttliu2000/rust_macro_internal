@@ -11,6 +11,7 @@ use crate::init_args::*;
 /// The macro takes 4 arguments: the path to the mermaid file, the name of the struct to be generated, 
 /// the name of the target node in the flowchart, 
 /// and the name of the field in the target node to be used as the variable in the logic code.
+/// See also [`crate::flow2logic`]
 pub fn expand(attr: InitArgs4) -> TokenStream {
     let mmd_file_path = attr.get_path().value();
     let struct_name = attr.get_tag().to_string();
